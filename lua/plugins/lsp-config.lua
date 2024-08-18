@@ -2,7 +2,9 @@ return {
 	{
 		"williamboman/mason.nvim",
 		config = function()
-			require("mason").setup()
+			require("mason").setup({
+				ensure_installed = { "luacheck", "shellcheck", "shfmt" },
+			})
 		end,
 	},
 	{
@@ -47,6 +49,14 @@ return {
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+		end,
+	},
+	{
+		"nvim-cmp",
+		dependencies = { "hrsh7th/cmp-emoji" },
+		opts = function(opts)
+      local sources= opts.sources or {}
+			table.insert(sources, { name = "emoji" })
 		end,
 	},
 }

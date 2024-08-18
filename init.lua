@@ -18,6 +18,8 @@ local opts={}
 
 -- Setup lazy.nvim
 require("nvim-options")
+--vim.cmd [[packadd copilot.vim]]
+--require("copilot.vim").setup()
 require("lazy").setup("plugins")
 
 
